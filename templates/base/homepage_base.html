@@ -1,0 +1,332 @@
+<!--   Copyright 2020 Kartik Sharma, Saurabh Saxena-->
+<!--   Licensed under the Apache License, Version 2.0 (the "License");-->
+<!--   you may not use this file except in compliance with the License.-->
+<!--   You may obtain a copy of the License at-->
+<!--       http://www.apache.org/licenses/LICENSE-2.0-->
+<!--   Unless required by applicable law or agreed to in writing, software-->
+<!--   distributed under the License is distributed on an "AS IS" BASIS,-->
+<!--   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.-->
+<!--   See the License for the specific language governing permissions and-->
+<!--   limitations under the License.-->
+
+<!--  ==============================================================================-->
+
+<!--   Dashboard Base_HTML File -->
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/style.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/core.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css">
+    <link href="/static/css/skin-mobile-application-one-page.css" rel="stylesheet"/>
+    <link href="/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7CLato:300,400,600,700' rel='stylesheet'
+          type='text/css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/static/js/custom.js"></script>
+    <script src="/static/js/timber.master.min.js"></script>
+    <style type="text/css">
+         .pagination ul li{
+            display: inline-block;
+         }
+         /* Custom Scrollbar */
+         /* width */
+         ::-webkit-scrollbar {
+           width: 10px;
+         }
+         /* Track */
+         ::-webkit-scrollbar-track {
+           box-shadow: inset 0 0 5px grey;
+           border-radius: 2px;
+         }
+
+         /* Handle */
+         ::-webkit-scrollbar-thumb {
+           background: #3C4F76;
+           border-radius: 10px;
+         }
+
+         /* Handle on hover */
+         ::-webkit-scrollbar-thumb:hover {
+           background: #3C4F76;
+         }
+
+    .footer-top{
+    background-color:#383F51;
+    }
+
+    .rec_button{
+      background: white;
+      font-size: 14px;
+      color:#e23334;
+      padding: 1rem 3.5rem;
+      text-transform: uppercase;
+      transition: all .5s ease-in-out;
+          box-shadow: 4px 7px 10px #ccc;
+        -moz-box-shadow: 4px 7px 10px #ccc;
+        -webkit-box-shadow: 4px 7px 10px #ccc;
+        -o-box-shadow: 4px 7px 10px #ccc;
+      border: none;
+      display: inline-block;
+      text-decoration: none;
+      background-image: url(/static/images/cases/icon_arrow.png)!important;
+      background-repeat: no-repeat;
+      background-size: 20px;
+      background-position: right 6px center;
+      padding-left: 8px;
+      margin-right: 10px;
+      margin-top: 10px;
+
+
+    }
+
+    .rec_button_white {
+        background: #fff;
+        border-color: #fff;
+        font-size: 14px;
+        padding: 1rem 2.5rem;
+        text-transform: uppercase;
+        transition: all .5s ease-in-out;
+        color: #333!important;
+        border: 1px solid #fff;
+        display: inline-block;
+        text-decoration: none;
+    }
+
+ .rec_button_333 {
+        background: #333;
+        border-color: #333;
+        font-size: 14px;
+        padding: 1rem 2.5rem;
+        text-transform: uppercase;
+        transition: all .5s ease-in-out;
+        color: #fff!important;
+        border: 1px solid #333;
+        display: inline-block;
+        text-decoration: none;
+    }
+
+
+ .navigation .sub-menu {
+
+        box-shadow: 6px 10px 15px rgba(0, 0, 0, 0.22);
+       -webkit-box-shadow: 6px 10px 15px rgba(0,0, 0, 0.5);
+       box-shadow: 6px 10px 15px rgba(0, 0, 0, 0.5);
+       border-radius:0;
+    }
+
+
+         .sub-menu-mobile2{
+         display:none;
+
+         }
+
+         @media screen and (max-width: 767px) {
+            .logo-side{
+               display: none;
+            }
+         }
+
+
+    </style>
+    {% endblock %}
+</head>
+<body class="{{ body_class }}">
+
+<div class="sidenav" id="mySidenav">
+    <a class="closebtn" href="javascript:void(0)" onclick="closeNav()">&times;</a>
+    <ul class="mob_nav">
+        <li>
+            <a href="#">Home</a>
+        </li>
+
+        <li>
+            <a href="#">About Recarxiv</a>
+        </li>
+        <li>
+            <a href="#">How Recarxiv Works</a>
+        </li>
+        <li>
+            <a href="#">Contact Us</a>
+        </li>
+
+    </ul>
+</div>
+
+<div class="container-fluid header_div" style="margin-bottom: 16px;">
+
+    <header class="header header-fixed header-fixed-on-mobile header-transparent" data-bkg-threshold="100">
+
+        <div class="header-inner">
+            <div class="row nav-bar" style="max-width: 187rem;">
+
+                <div class="col-sm-2">
+                    <span class="ham-menu" onclick="openNav()" style="font-size:30px;cursor:pointer;">&#9776;</span>
+                    <div class="logo">
+                        <div class="logo-inner">
+                            <a href="#"><img alt="Logo" src="/static/images/recarxiv.png" width="250px"/></a>
+                            <a href="#"><img alt="Logo" src="/static/images/recarxiv.png" width="250px"/></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="column width-10 nav-bar-inner">
+                    <nav class="navigation nav-block primary-navigation nav-left" style="padding-left:100px;">
+                        <ul>
+                            <li class="current">
+                                <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">About Recarxiv</a>
+                            </li>
+                            <li>
+                                <a href="#">How Recarxiv Works</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+
+
+{% block body %}
+{% endblock %}
+
+
+<div class="container-fluid main_banner">
+    <div id="alert_div" style="position: absolute;z-index: 999;top: 15%; left:63%;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div class="container-fluid nopadding">
+        {% block main_content %}
+        {% endblock %}
+    </div>
+
+    <div class="container-fluid footer">
+        {% block footer %}
+        <footer class="footer" id="contact">
+            <div class="footer-top">
+                <div class="row flex">
+                    <div class="column width-4">
+                        <div class="widget">
+                            <img src="/static/images/recarxiv_full_logo_white.png" width="267px">
+                        </div>
+
+                    </div>
+                    <div class="column width-8">
+
+                        <div class="column width-4 half-width">
+
+                            <div class="widget">
+                                <h4 style="color:#dddbf1;">Links</h4>
+                                <ul>
+                                    <li>
+                                        <b><a href="#">About Recarxiv</a></b>
+                                    </li>
+
+                                    <li>
+                                        <b><a href="#">How Recarxiv works</a></b>
+                                    </li>
+                                    <li>
+                                        <b><a href="#">Contact Us</a></b>
+                                    </li>
+                                    <li>
+                                        <b><a href="#">Subscribe To Our Newsletter</a></b>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column width-4 half-width">
+                            <div class="widget">
+                                <h4 style="color:#dddbf1;">Whats New</h4>
+                                </b>
+                                <ul>
+                                    <li>
+                                        <b> <a href="#">View all Categories</a></b>
+                                    </li>
+                                    <li>
+                                        <b> <a href="#">Trending Papers</a></b>
+                                    </li>
+                                    <li>
+                                        <b> <a href="#">New Papers</a></b>
+                                    </li>
+                                    <li>
+                                        <b><a href="#">Fetch Random Paper</a></b>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="column width-4">
+                            <div class="widget">
+                                <h4 style="color:#dddbf1;">Contact Us</h4>
+                                <address style="color:#dddbf1;">
+                                    Kartik Sharma - @kartik4949<br>
+                                    Saurabh Saxena - @saurabh26121996<br>
+                                </address>
+                                <p onMouseOver="this.style.color='#dddbf1'" style="color:#dddbf1;">
+                                    Email: <a href="mailto:info@recarxiv.com">info@recarxiv.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" style="padding-top:12px;">
+                <div class="row">
+                    <div class="column width-12">
+                        <p class="copyright">
+                            &copy; Recarxiv - All Rights Reserved.
+                        </p>
+                        <p class="copyright" style="padding-left: 30px;">
+                            <b><a href="#">PRIVACY POLICY</a></b>
+                        </p>
+                        <p class="copyright" style="padding-left: 10px;">
+                            |
+                        </p>
+                        <p class="copyright" style="padding-left: 10px;">
+                            <b><a href="#">TERMS & CONDITIONS</a></b>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+        {% endblock %}
+    </div>
+
+
+    <script>
+    </script>
+    <script crossorigin="anonymous"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>
