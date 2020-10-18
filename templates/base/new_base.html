@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <title>{% block title %}{% endblock %}</title>
+      {% block head %}
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="/static/style.css">
+      <link rel="stylesheet" type="text/css" href="/static/css/custom.css">
+      <link rel="stylesheet" href="/static/css/core.min.css" />
+      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="/static/css/skin-mobile-application-one-page.css" />
+      <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico">
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%7CLato:300,400,600,700' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="/static/js/custom.js"></script>
+      <script src="/static/js/timber.master.min.js"></script>
+      <style type="text/css">
+         .pagination ul li{
+            display: inline-block;
+         }
+         /* Custom Scrollbar */
+         /* width */
+         ::-webkit-scrollbar {
+           width: 10px;
+         }
+         /* Track */
+         ::-webkit-scrollbar-track {
+           box-shadow: inset 0 0 5px grey;
+           border-radius: 2px;
+         }
+
+         /* Handle */
+         ::-webkit-scrollbar-thumb {
+           background: #3C4F76;
+           border-radius: 10px;
+         }
+
+         /* Handle on hover */
+         ::-webkit-scrollbar-thumb:hover {
+           background: #b30000;
+         }
+
+    .footer-top{
+    background-color:#383F51;
+    }
+
+    .rec_button{
+      background: white;
+      font-size: 14px;
+      color:#e23334;
+      padding: 1rem 3.5rem;
+      text-transform: uppercase;
+      transition: all .5s ease-in-out;
+          box-shadow: 4px 7px 10px #ccc;
+        -moz-box-shadow: 4px 7px 10px #ccc;
+        -webkit-box-shadow: 4px 7px 10px #ccc;
+        -o-box-shadow: 4px 7px 10px #ccc;
+      border: none;
+      display: inline-block;
+      text-decoration: none;
+      background-image: url(/static/images/cases/icon_arrow.png)!important;
+      background-repeat: no-repeat;
+      background-size: 20px;
+      background-position: right 6px center;
+      padding-left: 8px;
+      margin-right: 10px;
+      margin-top: 10px;
+
+
+    }
+
+    .rec_button_white {
+        background: #fff;
+        border-color: #fff;
+        font-size: 14px;
+        padding: 1rem 2.5rem;
+        text-transform: uppercase;
+        transition: all .5s ease-in-out;
+        color: #333!important;
+        border: 1px solid #fff;
+        display: inline-block;
+        text-decoration: none;
+    }
+
+ .rec_button_333 {
+        background: #333;
+        border-color: #333;
+        font-size: 14px;
+        padding: 1rem 2.5rem;
+        text-transform: uppercase;
+        transition: all .5s ease-in-out;
+        color: #fff!important;
+        border: 1px solid #333;
+        display: inline-block;
+        text-decoration: none;
+    }
+
+
+ .navigation .sub-menu {
+
+        box-shadow: 6px 10px 15px rgba(0, 0, 0, 0.22);
+       -webkit-box-shadow: 6px 10px 15px rgba(0,0, 0, 0.5);
+       box-shadow: 6px 10px 15px rgba(0, 0, 0, 0.5);
+       border-radius:0;
+    }
+
+
+         .sub-menu-mobile2{
+         display:none;
+
+         }
+
+         .modal {
+             display: none; /* Hidden by default */
+             position: fixed; /* Stay in place */
+             z-index: 999; /* Sit on top */
+             left: 0%;
+             top: 0%;
+             width: 100%; /* Full width */
+             height: 100%; /* Full height */
+             overflow: auto; /* Enable scroll if needed */
+             background-color: rgb(0,0,0); /* Fallback color */
+             background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+             overflow: hidden;
+         }
+
+           /* Modal Content/Box */
+         .modal-content {
+             background-color: #fefefe;
+             margin: 15% auto; /* 15% from the top and centered */
+             padding: 20px;
+             text-align: center;
+             border: 1px solid #888;
+             width: 90%; /* Could be more or less, depending on screen size */
+             height: 400px;
+         }
+         @media screen and (max-width: 767px) {
+            .logo-side{
+               display: none;
+            }
+         }
+
+
+
+      </style>
+      {% endblock %}
+   </head>
+   <body class="{{ body_class }}">
+
+         <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <ul class="mob_nav">
+               <li>
+
+                  <a href="#">Hi Saxena</a>
+                  <a href="#">Home</a>
+
+               </li>
+
+               <li>
+                  <a href="#">About Us</a>
+               </li>
+               <li>
+                  <a href="#">How It Works</a>
+               </li>
+               <li>
+                  <a href="#">Contact Us</a>
+               </li>
+
+            </ul>
+         </div>
+
+      <div class="container-fluid header_div" style="margin-bottom: 16px;">
+
+         <header class="header header-fixed header-fixed-on-mobile header-transparent" data-bkg-threshold="100">
+
+            <div class="header-inner">
+               <div class="row nav-bar" style="max-width: 187rem;">
+
+             <div class="col-sm-2" >
+             <span style="font-size:30px;cursor:pointer;" class="ham-menu" onclick="openNav()">&#9776;</span>
+                     <div class="logo">
+                        <div class="logo-inner">
+                           <a href="#"><img src="/static/images/recarxiv.png" width="250px" alt="Logo" /></a>
+                           <a href="#"><img src="/static/images/recarxiv.png" width="250px" alt="Logo" /></a>
+
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="column width-10 nav-bar-inner">
+                        <nav class="navigation nav-block primary-navigation nav-left" style="padding-left:100px;">
+                        <ul>
+                           <li class="current">
+
+                              <a href="#">Home</a>
+
+                           </li>
+                            <li>
+                  <a href="#">About Us</a>
+               </li>
+               <li>
+                  <a href="#">How It Works</a>
+               </li>
+               <li>
+                  <a href="#">Contact Us</a>
+               </li>
+
+
+
+                        </ul>
+         </nav>
+
+
+                  </div>
+               </div>
+            </div>
+         </header>
+      </div>
+
+
+         {% block body %}
+      {% endblock %}
+
+
+
+      <div class="container-fluid main_banner">
+      <div id="alert_div" style="position: absolute;z-index: 999;top: 15%; left:63%;">
+         {% with messages = get_flashed_messages(with_categories=true) %}
+         {% if messages %}
+         {% for category, message in messages %}
+         <div class="alert alert-{{ category }}" role="alert">
+            {{ message }}
+         </div>
+         {% endfor %}
+         {% endif %}
+         {% endwith %}
+      </div>
+      <div class="container-fluid nopadding">
+         {% block main_content %}
+         {% endblock %}
+      </div>
+
+      <div class="container-fluid footer">
+         {% block footer %}
+         <footer class="footer" id="contact">
+            <div class="footer-top">
+               <div class="row flex">
+                  <div class="column width-4">
+                     <div class="widget">
+                        <img src="/static/images/recarxiv_grey.png" width="267px">
+                        <p style="color:#dddbf1; padding-top: 6px;">Customise your operations for free with a perfect stay.</p>
+                     </div>
+
+                  </div>
+                  <div class="column width-8">
+
+                     <div class="column width-4 half-width">
+
+                        <div class="widget">
+                           <h4 style="color:#ffffff;">Links</h4>
+                           <ul>
+                              <li>
+                                 <b><a href="#">About Us</a></b>
+                              </li>
+                              <!-- <li>
+                                 <b><a href="#">Blog</a></b>
+                              </li> -->
+
+                              <li>
+                                 <b><a href="#">How it works</a></b>
+                              </li>
+                              <li>
+                                 <b><a href="/contact">Contact Us</a></b>
+                              </li>
+                              <li>
+                                 <!--<b><a href="#">Integrations</a></b>-->
+                              </li>
+
+                           </ul>
+
+                        </div>
+
+                     </div>
+                     <div class="column width-4 half-width">
+                        <div class="widget">
+                           <h4 style="color:#ffffff;">Whats New</h4>
+                           </b>
+                           <ul>
+                               <li>
+                                   <b> <a href="#">View all Categories</a></b>
+                               </li>
+                               <li>
+                                   <b> <a href="#">Trending Papers</a></b>
+                               </li>
+                               <li>
+                                   <b> <a href="#">New Papers</a></b>
+                               </li>
+                               <li>
+                                   <b><a href="#">Fetch Random Paper</a></b>
+                               </li>
+                           </ul>
+
+                        </div>
+                     </div>
+                     <div class="column width-4">
+                        <div class="widget">
+                           <h4 style="color:#dddbf1;">Contact Us</h4>
+                           <address style="color:#dddbf1;">
+                              Kartik Sharma - @kartik4949<br>
+                               Saurabh Saxena - @saurabh26121996<br>
+                           </address>
+                           <p style="color:#dddbf1;" onMouseOver="this.style.color='#dddbf1'">
+                              Email: <a href="mailto:info@recarxiv.ai">info@recarxiv.ai</a>
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div style="padding-top:12px;" class="footer-bottom">
+               <div class="row">
+                  <div class="column width-12">
+                     <p class="copyright">
+                        &copy; Recarxiv.ai. All Rights Reserved.
+                     </p>
+                     <p style="padding-left: 30px;" class="copyright">
+                        <b><a href="#">PRIVACY POLICY</a></b>
+                     </p>
+                     <p style="padding-left: 10px;" class="copyright">
+                        |
+                     </p>
+                     <p style="padding-left: 10px;" class="copyright">
+                        <b><a href="#">TERMS & CONDITIONS</a></b>
+                     </p>
+
+                  </div>
+               </div>
+            </div>
+         </footer>
+         {% endblock %}
+      </div>
+
+
+     <script>
+      </script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+   </body>
+</html>
