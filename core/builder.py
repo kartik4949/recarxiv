@@ -16,6 +16,7 @@
 
 """Recommender System builder function."""
 
+
 def recommender_builder(profile, parser):
     # WIP TODO (kartik4949) Build Function with Recommender Class.
     raise NotImplementedError

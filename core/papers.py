@@ -21,13 +21,25 @@ from typing import Any
 
 
 @dataclass(order=True)
-class paper:
+class Paper:
+    """Paper.
+        Dataclass for storing paper.
+        id: Paper url
+        title: Paper title
+        summary: Short summary of paper.
+    """
+
     id: int
     title: str
     summary: str
 
 
 @dataclass(order=True)
-class paper_table:
-    id: int
-    paper_instance: paper = field(default_factory=paper)
+class Cluster:
+    """Cluster.
+        topic: Topic
+        paper_instance: Instance of Paper data classes.
+    """
+
+    topic: str
+    paper_instance: Paper = field(default_factory=Paper)
