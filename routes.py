@@ -27,4 +27,9 @@ app.secret_key = '7bc9b645bba64027bc9b645bba640269368993f2190db3369368993f2190db
 
 # Recarxiv Homepage Route
 app.add_url_rule('/',view_func=main_views.HomePageView.as_view('home_page_view'))
-
+# Fetch User Suggestions
+app.add_url_rule('/suggestions',view_func=main_views.FetchUserSuggestionHandler.as_view('fetch_user_suggestions'))
+# User Selected Topics Ajax Call
+app.add_url_rule('/suggestions/topics/ajax',view_func=main_views.UserSuggestedTopicHandler.as_view('user_selected_topic_handler'))
+# Recommender System
+app.add_url_rule('/suggested/arxiv/<arxiv_base64>',view_func=main_views.RecommendedArxiv.as_view('recommended_Arxiv'))

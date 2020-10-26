@@ -149,7 +149,7 @@
     <a class="closebtn" href="javascript:void(0)" onclick="closeNav()">&times;</a>
     <ul class="mob_nav">
         <li>
-            <a href="#">Home</a>
+            <a href="{{url_for('home_page_view')}}">Home</a>
         </li>
 
         <li>
@@ -176,8 +176,8 @@
                     <span class="ham-menu" onclick="openNav()" style="font-size:30px;cursor:pointer;">&#9776;</span>
                     <div class="logo">
                         <div class="logo-inner">
-                            <a href="#"><img alt="Logo" src="/static/images/recarxiv.png" width="250px"/></a>
-                            <a href="#"><img alt="Logo" src="/static/images/recarxiv.png" width="250px"/></a>
+                            <a href="{{url_for('home_page_view')}}"><img alt="Logo" src="/static/images/recarxiv.png" width="250px"/></a>
+
                         </div>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
                     <nav class="navigation nav-block primary-navigation nav-left" style="padding-left:100px;">
                         <ul>
                             <li class="current">
-                                <a href="#">Home</a>
+                                <a href="{{url_for('home_page_view')}}">Home</a>
                             </li>
                             <li>
                                 <a href="#">About Recarxiv</a>
