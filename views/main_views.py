@@ -19,14 +19,12 @@
 import flask
 from flask.views import View, MethodView
 from flask import render_template, request, redirect, url_for, flash, jsonify, Flask, make_response, Response, send_file
+from . import constants
+from core import builder
 import base64
-app = Flask(__name__,template_folder='././templates')
 
-suggestions = ["Computer vision","Segmentation","Instance segmentation","Natural language processing",
-               "Object detection","Binary classification","Pose estimation","Image generation",
-               "Scene segmentation","Real time object detection","Image-to-image translation",
-               "Keypoint detection","Image super-resolution","Machine translation",
-               "Sentiment analysis","Recommended systems"]
+app = Flask(__name__,template_folder='././templates')
+SUGGESTIONS = constants.SUGGESTIONS
 
 class HomePageView(View):
     '''Recarxiv Homepage View Handler'''
@@ -38,7 +36,7 @@ class FetchUserSuggestionHandler(View):
     '''User Suggestions Input'''
     methods = ['GET']
     def dispatch_request(self):
-        return render_template('App/FetchSuggestionPage.html',suggestions=suggestions)
+        return render_template('App/FetchSuggestionPage.html',suggestions=SUGGESTIONS)
 
 class UserSuggestedTopicHandler(View):
     '''Fetch user suggested topics and return success'''
@@ -57,4 +55,6 @@ class RecommendedArxiv(View):
     methods = ['GET']
     def dispatch_request(self,arxiv_base64):
         selected_topics = base64.b64decode(arxiv_base64).decode('UTF-8', 'ignore').split('-')[:-1]
-        return render_template('App/RecommendArxiv.html')
+        payload = builder.recommender_builder(selected_topics)
+        # payload - JSON format
+        return render_template('App/RecommendArxiv.html',payload=payload)
