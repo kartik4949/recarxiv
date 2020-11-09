@@ -103,6 +103,7 @@ width: 100%;
 
 
 
+
 </style>
 
 <div class="col-xs-12" style="min-height:600px;margin-top:100px;">
@@ -112,6 +113,7 @@ width: 100%;
              xmlns:xlink="http://www.w3.org/1999/xlink">
             <style>
                 svg#freepik_stories-at-work:not(.animated) .animable {opacity: 0;}svg#freepik_stories-at-work.animated #freepik--background-complete--inject-263 {animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) slideLeft,1.5s Infinite  linear floating;animation-delay: 0s,1s;}svg#freepik_stories-at-work.animated #freepik--Floor--inject-263 {animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) slideUp;animation-delay: 0s;}svg#freepik_stories-at-work.animated #freepik--Graphics--inject-263 {animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) slideLeft,1.5s Infinite  linear floating;animation-delay: 0s,1s;}svg#freepik_stories-at-work.animated #freepik--Character--inject-263 {animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) zoomOut;animation-delay: 0s;}            @keyframes slideLeft {                0% {                    opacity: 0;                    transform: translateX(-30px);                }                100% {                    opacity: 1;                    transform: translateX(0);                }            }                    @keyframes floating {                0% {                    opacity: 1;                    transform: translateY(0px);                }                50% {                    transform: translateY(-10px);                }                100% {                    opacity: 1;                    transform: translateY(0px);                }            }                    @keyframes slideUp {                0% {                    opacity: 0;                    transform: translateY(30px);                }                100% {                    opacity: 1;                    transform: inherit;                }            }                    @keyframes zoomOut {                0% {                    opacity: 0;                    transform: scale(1.5);                }                100% {                    opacity: 1;                    transform: scale(1);                }            }
+
 
 
 
@@ -1141,17 +1143,15 @@ width: 100%;
         <br>
 
         <h2 class="mobile_view">Lets Get Started - </h2>
-        <a href="{{url_for('fetch_user_suggestions')}}"><button class="btn1-grad mobile_view">Hey Recarxiv! Recommend Me Some Papers</button></a>
+        <a href="{{url_for('fetch_user_suggestions')}}">
+            <button class="btn1-grad mobile_view">Hey Recarxiv! Recommend Me Some Papers</button>
+        </a>
         <h3 class="site_view">Recommended Arxiv</h3>
         <hr>
         <h3 class="mobile_view">Recommended Arxiv</h3>
-        <p style="text-align:justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-            Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <p style="text-align:justify;font-size:20px;">Recarxiv is recommended arxiv, which recommends personalised
+            papers given user interests and papers liked. Recarxiv helps you find the paper of your life! It gives you
+            special vision to the papers you are looking , just set proper lenses.</p>
 
         <br>
 
@@ -1187,7 +1187,9 @@ width: 100%;
         </div>
         <hr>
         <h2 class="site_view">Lets Get Started - </h2>
-        <a href="{{url_for('fetch_user_suggestions')}}"><button class="btn1-grad site_view">Hey Recarxiv! Recommend Me Some Papers</button></a>
+        <a href="{{url_for('fetch_user_suggestions')}}">
+            <button class="btn1-grad site_view">Hey Recarxiv! Recommend Me Some Papers</button>
+        </a>
         <br>
     </div>
 </div>
@@ -1196,23 +1198,10 @@ width: 100%;
     <div class="col-xs-6 full_width_mobile">
         <h1><b>How Recarxiv Works <img src="static/images/shocked_face.png" style="width:70px;"></b></h1>
         <br>
-        <p style="text-align:justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-            Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <p style="text-align:left;font-size:20px;">Give us your interests,<br> like the papers you want to see more from
+            the displayed papers <br>and you are mostly done Enjoy your personalised feed of papers.</p>
         <img src="static/images/recarxiv_full_logo.png">
         <br>
-        <p style="text-align:justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-            Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.industry's standard dummy text ever since the 1500s, when
-            an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
     </div>
     <div class="col-xs-6 full_width_mobile">
         <svg class="animated" id="freepik_stories-filing-system" version="1.1"
@@ -1220,6 +1209,7 @@ width: 100%;
              xmlns:xlink="http://www.w3.org/1999/xlink">
             <style>
                 svg#freepik_stories-filing-system:not(.animated) .animable {opacity: 0;}svg#freepik_stories-filing-system.animated #freepik--background-complete--inject-236 {animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) zoomOut,1.5s Infinite  linear floating;animation-delay: 0s,1s;}svg#freepik_stories-filing-system.animated #freepik--Floor--inject-236 {animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) fadeIn;animation-delay: 0s;}svg#freepik_stories-filing-system.animated #freepik--Box--inject-236 {animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) lightSpeedLeft,1.5s Infinite  linear floating;animation-delay: 0s,1s;}svg#freepik_stories-filing-system.animated #freepik--Character--inject-236 {animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) slideRight;animation-delay: 0s;}svg#freepik_stories-filing-system.animated #freepik--Plant--inject-236 {animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) zoomIn,1.5s Infinite  linear floating;animation-delay: 0s,1s;}svg#freepik_stories-filing-system.animated #freepik--filing-cabinet--inject-236 {animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) fadeIn,1.5s Infinite  linear floating;animation-delay: 0s,1s;}            @keyframes zoomOut {                0% {                    opacity: 0;                    transform: scale(1.5);                }                100% {                    opacity: 1;                    transform: scale(1);                }            }                    @keyframes floating {                0% {                    opacity: 1;                    transform: translateY(0px);                }                50% {                    transform: translateY(-10px);                }                100% {                    opacity: 1;                    transform: translateY(0px);                }            }                    @keyframes fadeIn {                0% {                    opacity: 0;                }                100% {                    opacity: 1;                }            }                    @keyframes lightSpeedLeft {              from {                transform: translate3d(-50%, 0, 0) skewX(20deg);                opacity: 0;              }              60% {                transform: skewX(-10deg);                opacity: 1;              }              80% {                transform: skewX(2deg);              }              to {                opacity: 1;                transform: translate3d(0, 0, 0);              }            }                    @keyframes slideRight {                0% {                    opacity: 0;                    transform: translateX(30px);                }                100% {                    opacity: 1;                    transform: translateX(0);                }            }                    @keyframes zoomIn {                0% {                    opacity: 0;                    transform: scale(0.5);                }                100% {                    opacity: 1;                    transform: scale(1);                }            }
+
 
             </style>
             <g class="animable" id="freepik--background-complete--inject-236"

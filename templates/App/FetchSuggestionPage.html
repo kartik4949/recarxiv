@@ -163,6 +163,7 @@ width: 100%;
 }
 
 
+
 </style>
 <div class="col-xs-12" style="min-height:600px;margin-top:100px;">
     <div class="col-xs-2 site_view">
@@ -174,23 +175,23 @@ width: 100%;
         <div class="row">
 
 
-        {% for names in suggestions %}
+            {% for names in suggestions %}
             <div class="column1">
                 <div class="card" id="item_{{loop.index0}}" onclick="clicked({{loop.index0}})">
                     <div class="card card-1" style="text-align:center;">
                         <div class="selected_{{loop.index0}}" style="display:none">
-                        <img src="/static/images/suggestions/checked.png" style="width:30px;float:right;">
+                            <img src="/static/images/suggestions/checked.png" style="width:30px;float:right;">
                         </div>
                         <div class="centered">{{names|title}}</div>
                     </div>
                 </div>
             </div>
-        {% endfor %}
+            {% endfor %}
 
         </div>
 
         <hr>
-<button class="btn1-grad site_view" id="submit" style="display:none;">Continue with your selection</button>
+        <button class="btn1-grad site_view" id="submit" style="display:none;">Continue with your selection</button>
     </div>
     <div class="col-xs-2 site_view">
     </div>
@@ -248,6 +249,7 @@ $("#submit").click(function(){
   alert('Please select some topics!')
   }
 });
+
 
 </script>
 {% endblock %}

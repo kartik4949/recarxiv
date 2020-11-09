@@ -16,8 +16,8 @@
 
 """ Flask App Constants """
 
-SUGGESTIONS = ["Computer vision","Segmentation","Instance segmentation","Natural language processing",
-               "Object detection","Binary classification","Pose estimation","Image generation",
-               "Scene segmentation","Real time object detection","Image-to-image translation",
-               "Keypoint detection","Image super-resolution","Machine translation",
-               "Sentiment analysis","Recommended systems"]
+SUGGESTIONS = ["Computer vision", "Segmentation", "Instance segmentation", "Natural language processing",
+               "Object detection", "Binary classification", "Pose estimation", "Image generation",
+               "Scene segmentation", "Real time object detection", "Image-to-image translation",
+               "Keypoint detection", "Image super-resolution", "Machine translation",
+               "Sentiment analysis", "Recommended systems"]
