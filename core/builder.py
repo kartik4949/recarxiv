@@ -16,7 +16,50 @@
 
 """Recommender System builder function."""
 
+import json
+from bunch import Bunch
 
-def recommender_builder(profile, parser):
-    # WIP TODO (kartik4949) Build Function with Recommender Class.
-    raise NotImplementedError
+from fetch import Fetch
+
+
+class ClusterTopic:
+    def __init__(self):
+
+        self.config = {
+            "max_result": 1000,
+            "topic_score": 10.0,
+            "threshold": 1.0,
+            "base_url": "http://export.arxiv.org/api/query?",
+        }
+        self.config = Bunch(self.config)
+        self.fetch = Fetch(self.config)
+
+    @staticmethod
+    def format_json(papers):
+        json_out = {"payload": []}
+        for topic, paper_data in papers.items():
+            topic_data = []
+            _paper_dict = []
+            for paper, score in topic_data:
+                _paper_dict.append(
+                    {
+                        "title": paper.title,
+                        "url": paper.id,
+                        "summary": paper.summary,
+                        "author": "",
+                        "score": score,
+                    }
+                )
+            json_out["payload"].append({topic: _paper_dict})
+        return json_out
+
+    def __call__(self, profile):
+        papers = self.fetch._get_clusterd_papers(profile)
+        papers_json = self.format_json(papers)
+        return papers_json
+
+
+if __name__ == "__main__":
+    user_profile = ["instance segmentation", "object detection"]
+    clustertopic = ClusterTopic()
+    papers_json = clustertopic(user_profile)
