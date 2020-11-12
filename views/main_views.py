@@ -15,27 +15,20 @@
 """
 
 """ Flask App Main Views """
-
-import flask
-from flask.views import View, MethodView
+import base64
+from flask.views import View
 from flask import (
     render_template,
     request,
-    redirect,
-    url_for,
-    flash,
     jsonify,
     Flask,
-    make_response,
-    Response,
-    send_file,
 )
-from . import constants
+
 from core import builder
-import base64
+from . import topics
 
 app = Flask(__name__, template_folder="././templates")
-SUGGESTIONS = constants.SUGGESTIONS
+SUGGESTIONS = topics.SUGGESTIONS
 
 
 class HomePageView(View):
@@ -82,6 +75,9 @@ class RecommendedArxiv(View):
         selected_topics = (
             base64.b64decode(arxiv_base64).decode("UTF-8", "ignore").split("-")[:-1]
         )
-        payload = builder.recommender_builder(selected_topics)
-        # payload - JSON format
+        user_profile = []
+        for index in selected_topics:
+            user_profile.append(SUGGESTIONS[index])
+        clustertopic = builder.ClusterTopic()
+        payload = clustertopic(user_profile)
         return render_template("App/RecommendArxiv.html", payload=payload)

@@ -207,9 +207,11 @@ width: 100%;
                         <img src="/static/images/recommended_titles/url.png" style="width:30px;margin-right:10px;"><h4
                             style="display:inline-block"><a href="{{key['url']}}" target="_blank">{{key['url']}}</a>
                     </h4><br>
-                        <img class="site_view_inline" src="/static/images/recommended_titles/pen.png"
+                        {# <img class="site_view_inline" src="/static/images/recommended_titles/pen.png"
                              style="width:30px;margin-right:10px;"><h4 style="display:inline-block">
-                        {{key['author']}}</h4><br><br>
+                        {{key['author']}}</h4><br>
+                        #}
+                        <br>
                     </div>
                     <hr>
                     {% endfor %}
@@ -218,7 +220,6 @@ width: 100%;
             </div>
             {% endfor %}
         </div>
-        <button class="btn1-grad site_view" id="submit" style="display:none;">Continue with your selection</button>
     </div>
     <div class="col-xs-2 site_view">
     </div>
