@@ -17,17 +17,19 @@
 """ Flask App Routes """
 
 from flask import Flask
-from views import main_views
+from views import main_views, error_views
 
 app = Flask(__name__, template_folder="templates")
 
 # Recarxiv Homepage Route
 app.add_url_rule("/", view_func=main_views.HomePageView.as_view("home_page_view"))
+
 # Fetch User Suggestions
 app.add_url_rule(
     "/suggestions",
     view_func=main_views.FetchUserSuggestionHandler.as_view("fetch_user_suggestions"),
 )
+
 # User Selected Topics Ajax Call
 app.add_url_rule(
     "/suggestions/topics/ajax",
@@ -40,3 +42,12 @@ app.add_url_rule(
     "/suggested/arxiv/<arxiv_base64>",
     view_func=main_views.RecommendedArxiv.as_view("recommended_Arxiv"),
 )
+
+# Error 500 Page
+app.register_error_handler(500, error_views.server_error_500)
+
+# Error 404 Page
+app.register_error_handler(404, error_views.server_error_404)
+
+# Error 405 Page
+app.register_error_handler(405, error_views.server_error_405)

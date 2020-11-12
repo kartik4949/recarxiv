@@ -46,7 +46,7 @@ class FetchUserSuggestionHandler(View):
     methods = ["GET"]
 
     def dispatch_request(self):
-        return render_template("App/FetchSuggestionPage.html", suggestions=SUGGESTIONS)
+        return render_template("app/FetchSuggestionPage.html", suggestions=SUGGESTIONS)
 
 
 class UserSuggestedTopicHandler(View):
@@ -80,4 +80,4 @@ class RecommendedArxiv(View):
             user_profile.append(SUGGESTIONS[index])
         clustertopic = builder.ClusterTopic()
         payload = clustertopic(user_profile)
-        return render_template("App/RecommendArxiv.html", payload=payload)
+        return render_template("app/RecommendArxiv.html", payload=payload)
