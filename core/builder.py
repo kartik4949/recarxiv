@@ -57,9 +57,3 @@ class ClusterTopic:
         papers = self.fetch._get_clusterd_papers(profile)
         papers_json = self.format_json(papers)
         return papers_json
-
-
-if __name__ == "__main__":
-    user_profile = ["instance segmentation", "object detection"]
-    clustertopic = ClusterTopic()
-    papers_json = clustertopic(user_profile)

@@ -1,0 +1,235 @@
+<!--   Copyright 2020 Kartik Sharma, Saurabh Saxena-->
+<!--   Licensed under the Apache License, Version 2.0 (the "License");-->
+<!--   you may not use this file except in compliance with the License.-->
+<!--   You may obtain a copy of the License at-->
+<!--   http://www.apache.org/licenses/LICENSE-2.0-->
+<!--   Unless required by applicable law or agreed to in writing, software-->
+<!--   distributed under the License is distributed on an "AS IS" BASIS,-->
+<!--   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.-->
+<!--   See the License for the specific language governing permissions and-->
+<!--   limitations under the License.-->
+<!--  ==============================================================================-->
+
+<!--   Dashboard HTML File -->
+
+{% extends 'base/homepage_base.html' %}
+{% set body_class = 'dashboard' %}
+{% block title %}Recarxiv{% endblock %}
+{% block body %}
+<style>
+h1,h2,h3,h4,h5,h6{
+color:#3C4F76;
+}
+
+.btn1-grad {background-image: linear-gradient(to right, #7474BF 0%, #348AC7  51%, #7474BF  100%)}
+.btn1-grad {
+font-weight:bold;
+font-size:15px;
+width:auto;
+padding: 15px 45px;
+text-align: center;
+transition: 0.4s;
+background-size: 200% auto;
+color: white;
+box-shadow: 0 0 20px #eee;
+border-radius: 10px;
+display: block;
+}
+.btn1-grad:hover {
+background-position: right center; /* change the direction of the change here */
+color: #fff;
+text-decoration: none;
+}
+
+.grad_col_6{
+height:175px;
+width:175px;
+background-color: #08AEEA;
+background-image: linear-gradient(300deg, #9599E2 0%, #3C4F76 100%);
+border-radius:10px;
+-webkit-box-shadow: 0px 0px 24px -1px rgba(151,153,189,1);
+-moz-box-shadow: 0px 0px 24px -1px rgba(151,153,189,1);
+box-shadow: 0px 0px 24px -1px rgba(151,153,189,1);
+}
+
+.grad_col_62{
+height:250px;
+background-color: #08AEEA;
+background-image: linear-gradient(300deg, #9599E2 0%, #3C4F76 100%);
+border-radius:10px;
+-webkit-box-shadow: 0px 0px 24px -1px rgba(151,153,189,1);
+-moz-box-shadow: 0px 0px 24px -1px rgba(151,153,189,1);
+box-shadow: 0px 0px 24px -1px rgba(151,153,189,1);
+}
+
+.mobile_view{
+display:none;
+}
+.site_view{
+display:block;
+}
+.mobile_view_inline{
+display:none;
+}
+.site_view_inline{
+display:inline;
+}
+.full_width_mobile{}
+
+@media only screen and (max-width: 650px) {
+.mobile_view{
+display:block;
+}
+.site_view{
+display:none;
+}
+.mobile_view_inline{
+display:inline;
+}
+.site_view_inline{
+display:none;
+}
+.full_width_mobile{
+width: 100%;
+}
+}
+
+.card {
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  height: 125px;
+  margin: 1rem;
+  position: relative;
+  width: 125px;
+}
+
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.column1 {
+  float: left;
+  width: auto;
+  margin-bottom: 16px;
+  padding: 0 8px;
+  cursor:pointer;
+}
+
+@media screen and (max-width: 650px) {
+  .column1 {
+    width: auto;
+    display: block;
+    cursor:pointer;
+  }
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #08AEEA;
+  background-image: linear-gradient(300deg, #9599E2 0%, #3C4F76 100%);
+  border-radius:10px;
+  -webkit-box-shadow: 0px 0px 24px -1px rgba(151,153,189,1);
+  -moz-box-shadow: 0px 0px 24px -1px rgba(151,153,189,1);
+  box-shadow: 0px 0px 24px -1px rgba(151,153,189,1);
+}
+.container {
+  padding: 0 16px;
+}
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:white;
+
+}
+
+</style>
+<div class="col-xs-12" style="min-height:600px;margin-top:100px;">
+    <div class="col-xs-2 site_view">
+    </div>
+    <div class="col-xs-8 full_width_mobile">
+        <h1><b>Recarxiv</b></h1>
+        <br>
+        <h3 style="text-align:left;">Recommended Arxiv</h3>
+        <br>
+        <div class="row">
+            {% for x in payload['payload'] %}
+            {% for y in x.keys() %}
+            <div class="title" style="cursor:pointer;">
+                <h2><b><img src="/static/images/recommended_titles/list.png"
+                            style="width:15px;margin-right:10px;margin-top:-10px;">{{y.replace('_',' ')|title}}</b></h2>
+                <p class="click_to_expand">Click to expand.</p>
+
+                <div class="title_data" style="margin-left:15px;display:none">
+                    {% for key in x[y] %}
+                    <div class="col-xs-12">
+                        <img class="site_view_inline" src="/static/images/recommended_titles/title.png"
+                             style="width:30px;margin-right:10px;"><a href="{{key['url']}}" target="_blank"><h3
+                            style="display:inline-block"><b>{{key['title']}}</b></h3></a>
+
+                        {% if key['score']|int <= 3 %}
+                        <div style="background-color: #ff1d22; background-image: linear-gradient(62deg, #ff1d22 0%, #ff5759 100%); width:60px;height:40px;border-radius:10px;display:inline-block;margin-left:10px;">
+                            <span style="color:white;font-size:20px;padding-left:40%"><b>{{key['score']}}</b></span>
+                        </div>
+                        <br>
+                        {% elif key['score']|int > 3 and key['score']|int <= 6 %}
+                        <div style="background-color: #FBAB7E;background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);width:60px;height:40px;border-radius:10px;display:inline-block;margin-left:10px;">
+                            <span style="color:white;font-size:20px;padding-left:40%"><b>{{key['score']}}</b></span>
+                        </div>
+                        <br>
+                        {% elif key['score']|int > 6 and key['score']|int <= 9 %}
+                        <div style="background-color: #0093E9; background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); width:60px;height:40px;border-radius:10px;display:inline-block;margin-left:10px;">
+                            <span style="color:white;font-size:20px;padding-left:40%"><b>{{key['score']}}</b></span>
+                        </div>
+                        <br>
+                        {% elif key['score']|int >= 10 %}
+                        <div style="background-color: #96ffc6; background-image: linear-gradient(45deg, #96ffc6 0%, #35bd71 100%);width:60px;height:40px;border-radius:10px;display:inline-block;margin-left:10px;">
+                            <span style="color:white;font-size:20px;padding-left:40%"><b>{{key['score']}}</b></span>
+                        </div>
+                        <br>
+                        {% endif %}
+                        <br>
+                        <img src="/static/images/recommended_titles/report.png" style="width:30px;margin-right:10px;">
+                        <h4 style="display:inline-block">Summary</h4>
+                        <p style="text-align:justify">{{key['summary']|truncate(400)}}</p>
+                        <img src="/static/images/recommended_titles/url.png" style="width:30px;margin-right:10px;"><h4
+                            style="display:inline-block"><a href="{{key['url']}}" target="_blank">{{key['url']}}</a>
+                    </h4><br>
+                        {# <img class="site_view_inline" src="/static/images/recommended_titles/pen.png"
+                             style="width:30px;margin-right:10px;"><h4 style="display:inline-block">
+                        {{key['author']}}</h4><br>
+                        #}
+                        <br>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-xs-2 site_view">
+    </div>
+</div>
+<script>
+$('.title').on("click",function(){
+    $(this).find('.title_data').slideToggle(400);
+    $(this).find('.click_to_expand').slideToggle(400);
+});
+
+
+</script>
+{% endblock %}
