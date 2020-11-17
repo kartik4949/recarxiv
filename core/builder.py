@@ -19,7 +19,7 @@
 import json
 from bunch import Bunch
 
-from fetch import Fetch
+from core.fetch import Fetch
 
 
 class ClusterTopic:
@@ -40,7 +40,7 @@ class ClusterTopic:
         for topic, paper_data in papers.items():
             topic_data = []
             _paper_dict = []
-            for paper, score in topic_data:
+            for paper, score in paper_data:
                 _paper_dict.append(
                     {
                         "title": paper.title,

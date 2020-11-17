@@ -75,9 +75,9 @@ class RecommendedArxiv(View):
         selected_topics = (
             base64.b64decode(arxiv_base64).decode("UTF-8", "ignore").split("-")[:-1]
         )
-        user_profile = []
-        for index in selected_topics:
-            user_profile.append(SUGGESTIONS[index])
+        user_profile = [
+            topic for topic in map(lambda idx: SUGGESTIONS[int(idx)], selected_topics)
+        ]
         clustertopic = builder.ClusterTopic()
         payload = clustertopic(user_profile)
         return render_template("app/RecommendArxiv.html", payload=payload)

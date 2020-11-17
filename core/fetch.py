@@ -20,8 +20,8 @@ from tqdm import tqdm
 import feedparser
 import urllib.request as libreq
 
-from papers import Paper
-from similarity import Processor
+from core.papers import Paper
+from core.similarity import Processor
 
 """Below are helper functions to fetch and cluster papers based on user."""
 
@@ -88,7 +88,7 @@ class Fetch:
 
 
 if __name__ == "__main__":
-    user_profile = ["instance segmentation", "object detection"]
+    user_profile = ["Instance segmentation", "Object detection"]
     config = {
         "max_result": 1000,
         "topic_score": 10.0,
