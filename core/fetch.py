@@ -84,7 +84,7 @@ class Fetch:
 
                 if _score_topic > self.THRESHOLD:
                     topic_cluster.get(interest).append([paper, _score_topic])
-            return topic_cluster
+        return topic_cluster
 
 
 if __name__ == "__main__":
