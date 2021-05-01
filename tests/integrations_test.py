@@ -21,6 +21,8 @@ from bunch import Bunch
 
 from core.fetch import Fetch
 from core.similarity import Processor
+from core.builder import ClusterTopic
+
 
 config = {
     "max_result": 100,
@@ -32,6 +34,7 @@ config = {
 config = Bunch(config)
 fetch = Fetch(config)
 p = Processor()
+clustertopic = ClusterTopic()
 
 
 def test_sanity_fetching_integration():
@@ -50,6 +53,18 @@ def test_sanity_fetching_integration():
 def test_sanity_check_processor(text, num_tokens):
     tokens = p(text)
     assert len(tokens) == num_tokens
+
+
+@pytest.mark.parametrize(
+    ["user"],
+    [
+        pytest.param(["computer vision"]),
+        pytest.param(["scene segmentation"]),
+    ],
+)
+def test_integration_cluster_topic(user):
+    payload = clustertopic(user)
+    assert len(payload["payload"]) > 0
 
 
 if __name__ == "__main__":
