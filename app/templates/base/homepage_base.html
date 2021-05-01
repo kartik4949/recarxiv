@@ -211,7 +211,6 @@
 
 <div class="container-fluid main_banner">
     <div id="alert_div" style="position: absolute;z-index: 999;top: 15%; left:63%;">
-        {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         {% for category, message in messages %}
         <div class="alert alert-{{ category }}" role="alert">
@@ -219,7 +218,6 @@
         </div>
         {% endfor %}
         {% endif %}
-        {% endwith %}
     </div>
     <div class="container-fluid nopadding">
         {% block main_content %}
