@@ -14,23 +14,23 @@
 
 """
 
-""" Flask App Error Views """
+""" FastAPI App Constants """
 
-from flask import (
-    Flask,
-    render_template,
-)
-
-app = Flask(__name__, template_folder="././templates")
-
-
-def server_error_500(e):
-    return render_template("errors/500.html"), 500
-
-
-def server_error_404(e):
-    return render_template("errors/404.html"), 404
-
-
-def server_error_405(e):
-    return render_template("errors/405.html"), 405
+SUGGESTIONS = [
+    "Computer vision",
+    "Segmentation",
+    "Instance segmentation",
+    "Natural language processing",
+    "Object detection",
+    "Binary classification",
+    "Pose estimation",
+    "Image generation",
+    "Scene segmentation",
+    "Real time object detection",
+    "Image-to-image translation",
+    "Keypoint detection",
+    "Image super-resolution",
+    "Machine translation",
+    "Sentiment analysis",
+    "Recommended systems",
+]
