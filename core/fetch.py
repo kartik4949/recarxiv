@@ -63,7 +63,7 @@ class Fetch:
         for _, paper in enumerate(parse.entries):
             _paper = Paper(id=paper.id, title=paper.title, summary=paper.summary)
             _papers_list.append(_paper)
-        topic_cluster = collections.defaultdict(lambda: "Paper doesnot exists")
+        topic_cluster = collections.defaultdict(lambda: "Paper doesn't exists")
         _ = [topic_cluster.update({t: []}) for t in user_profile]
         for _, paper in tqdm(enumerate(_papers_list)):
             title = processor(paper.title)
@@ -85,18 +85,3 @@ class Fetch:
                 if _score_topic > self.THRESHOLD:
                     topic_cluster.get(interest).append([paper, _score_topic])
         return topic_cluster
-
-
-if __name__ == "__main__":
-    user_profile = ["Instance segmentation", "Object detection"]
-    config = {
-        "max_result": 1000,
-        "topic_score": 10.0,
-        "threshold": 1.0,
-        "base_url": "http://export.arxiv.org/api/query?",
-    }
-    from bunch import Bunch
-
-    config = Bunch(config)
-    fetch = Fetch(config)
-    papers = fetch._get_clusterd_papers(user_profile)
