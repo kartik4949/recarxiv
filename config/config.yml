@@ -1,0 +1,4 @@
+max_result: 100
+topic_score: 10.0
+threshold: 1.0
+base_url: "http://export.arxiv.org/api/query?"

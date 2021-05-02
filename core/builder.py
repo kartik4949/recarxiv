@@ -17,6 +17,7 @@
 """Recommender System builder function."""
 
 import json
+import yaml
 from bunch import Bunch
 
 from core.fetch import Fetch
@@ -24,12 +25,15 @@ from core.fetch import Fetch
 
 class ClusterTopic:
     def __init__(self):
+        with open("config/config.yml", "r") as ymlfile:
+            # SafeLoader usage.
+            cfg = yaml.load(ymlfile, yaml.SafeLoader)
 
         self.config = {
-            "max_result": 1000,
-            "topic_score": 10.0,
-            "threshold": 1.0,
-            "base_url": "http://export.arxiv.org/api/query?",
+            "max_result": cfg["max_result"],
+            "topic_score": cfg["topic_score"],
+            "threshold": cfg["threshold"],
+            "base_url": cfg["base_url"],
         }
         self.config = Bunch(self.config)
         self.fetch = Fetch(self.config)
