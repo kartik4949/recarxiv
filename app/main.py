@@ -16,6 +16,7 @@
 
 """ FastAPI routes."""
 import base64
+import logging
 
 from fastapi import Request, Form, FastAPI
 from fastapi.templating import Jinja2Templates
@@ -35,10 +36,24 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 templates = Jinja2Templates(directory="app/templates")
 SUGGESTIONS = topics.SUGGESTIONS
 
+# Create a custom logger
+logging.config.fileConfig("app_logging.conf", disable_existing_loggers=False)
+
+# get root logger
+logger = logging.getLogger(__name__)
+
+
+@app.get("/health", name="health")
+def health():
+    """Recarxiv Health Checker"""
+    logger.info("HealthChecker logging!")
+    return {"message": "Successfull Check!"}
+
 
 @app.get("/", name="home_page_view", response_class=HTMLResponse)
-def HomePageView(request: Request):
+async def home_page_view(request: Request):
     """Recarxiv Homepage View Handler"""
+    logger.info("homepage api request")
     return templates.TemplateResponse(
         "homepage/homepage.html",
         {"request": request},
@@ -46,8 +61,9 @@ def HomePageView(request: Request):
 
 
 @app.get("/suggestions", name="fetch_user_suggestions", response_class=HTMLResponse)
-def FetchUserSuggestionHandler(request: Request):
+def fetch_user_suggestions(request: Request):
     """User Suggestions Input"""
+    logger.info("fetch_user_suggestions api request")
     return templates.TemplateResponse(
         "app/FetchSuggestionPage.html",
         {"request": request, "suggestions": SUGGESTIONS},
@@ -58,9 +74,14 @@ def FetchUserSuggestionHandler(request: Request):
     "/suggestions/topics/ajax",
     name="user_selected_topic_handler",
 )
-def UserSuggestedTopicHandler(request: Request, selected: str = Form(...)):
+def user_suggestions(request: Request, selected: str = Form(...)):
     """Fetch user suggested topics and return success"""
-    selected = selected.split(",")
+    logger.info("user suggested topics api request")
+    try:
+        selected = selected.split(",")
+    except ValueError:
+        logger.error("Selected topics is not str.")
+
     url_string = ""
     for names in selected:
         url_string += names + "-"
@@ -78,16 +99,24 @@ def UserSuggestedTopicHandler(request: Request, selected: str = Form(...)):
     name="recommended_Arxiv",
     response_class=HTMLResponse,
 )
-def RecommendedArxiv(request: Request, arxiv_base64: str):
+def recommended_arxiv(request: Request, arxiv_base64: str):
     """Recommend Papers based on selected topics"""
-    selected_topics = (
-        base64.b64decode(arxiv_base64).decode("UTF-8", "ignore").split("-")[:-1]
-    )
-    user_profile = [
-        topic for topic in map(lambda idx: SUGGESTIONS[int(idx)], selected_topics)
-    ]
-    clustertopic = builder.ClusterTopic()
-    payload = clustertopic(user_profile)
+    try:
+        selected_topics = (
+            base64.b64decode(arxiv_base64).decode("UTF-8", "ignore").split("-")[:-1]
+        )
+
+        user_profile = [
+            topic for topic in map(lambda idx: SUGGESTIONS[int(idx)], selected_topics)
+        ]
+        clustertopic = builder.ClusterTopic()
+        payload = clustertopic(user_profile)
+    except ValueError:
+        logger.error("could not decode %s", arxiv_base64)
+    except IndexError:
+        logger.error("IndexError in SUGGESTIONS")
+    else:
+        logger.info("Successfully fetched papers and clustered!!")
     return templates.TemplateResponse(
         "app/RecommendArxiv.html", {"request": request, "payload": payload}
     )

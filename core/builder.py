@@ -18,31 +18,46 @@
 
 import json
 import yaml
+import logging
+from urllib.error import URLError
 from bunch import Bunch
 
 from core.fetch import Fetch
 
+# Create a custom logger
+logging.config.fileConfig("core_logging.conf", disable_existing_loggers=False)
+
+# get root logger
+core_logger = logging.getLogger(__name__)
+
 
 class ClusterTopic:
-    def __init__(self):
-        with open("config/config.yml", "r") as ymlfile:
-            # SafeLoader usage.
-            cfg = yaml.load(ymlfile, yaml.SafeLoader)
+    """ Cluster Topic Class. """
 
-        self.config = {
-            "max_result": cfg["max_result"],
-            "topic_score": cfg["topic_score"],
-            "threshold": cfg["threshold"],
-            "base_url": cfg["base_url"],
-        }
-        self.config = Bunch(self.config)
-        self.fetch = Fetch(self.config)
+    def __init__(self):
+        try:
+            with open("config/config.yml", "r") as ymlfile:
+                # SafeLoader usage.
+                cfg = yaml.load(ymlfile, yaml.SafeLoader)
+
+            self.config = {
+                "max_result": cfg["max_result"],
+                "topic_score": cfg["topic_score"],
+                "threshold": cfg["threshold"],
+                "base_url": cfg["base_url"],
+            }
+            self.config = Bunch(self.config)
+            self.fetch = Fetch(self.config)
+        except FileNotFoundError:
+            core_logger.critical("FileNotFoundError config.yml for core functions")
+            raise Exception("config.yml file not found!!")
+        else:
+            core_logger.info("successfully opened yaml!")
 
     @staticmethod
     def format_json(papers):
         json_out = {"payload": []}
         for topic, paper_data in papers.items():
-            topic_data = []
             _paper_dict = []
             for paper, score in paper_data:
                 _paper_dict.append(
@@ -58,6 +73,13 @@ class ClusterTopic:
         return json_out
 
     def __call__(self, profile):
-        papers = self.fetch._get_clusterd_papers(profile)
+        try:
+            papers = self.fetch._get_clusterd_papers(profile)
+        except URLError:
+            core_logger.error("Network is not reachable!")
+            raise Exception("Network issue in fetching papers!!")
+        else:
+            core_logger.info("papers fetched successfully!!")
         papers_json = self.format_json(papers)
+        core_logger.info("papers formatted successfully!!")
         return papers_json

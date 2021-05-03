@@ -45,7 +45,6 @@ class Fetch:
             0,
             self.MAX_R,
         )
-
         with libreq.urlopen(self.BASE_URL + query) as url:
             r = url.read()
         parse = feedparser.parse(r)
